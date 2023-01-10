@@ -28,10 +28,10 @@ public class AudioManager : MonoBehaviour
 		//If an instance already exists, destroy whatever this object is to enforce the singleton.
 		else if (Instance != this)
 		{
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 		//Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 	}
 	// Play a single clip through the sound effects source.
 

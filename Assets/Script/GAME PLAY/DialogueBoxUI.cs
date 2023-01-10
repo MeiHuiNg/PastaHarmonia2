@@ -9,6 +9,7 @@ public class DialogueBoxUI : MonoBehaviour
     [SerializeField] public Text DialogueText;
     [SerializeField] public GameObject [] DialogueBox;
     [SerializeField] public GameObject tutorialPasta;
+    [SerializeField] public AudioSource[] Soto;
 
     QuestionManager qm;
     int currentLine = 0;
@@ -23,6 +24,7 @@ public class DialogueBoxUI : MonoBehaviour
         {
             if(b.name == this.name)
             {
+                Soto[2].Play();
                 Debug.Log(currentBox);
                 break;
             }
@@ -60,22 +62,40 @@ public class DialogueBoxUI : MonoBehaviour
 
     public void changeLine()
     {
-        currentLine++;
+        Soto[currentLine].Stop();
+        currentLine++;        
         if (DialogueLine.Length > currentLine)
-            DialogueText.text = DialogueLine[currentLine];
+        {           
+            DialogueText.text = DialogueLine[currentLine];          
+            Soto[currentLine].Play();
+        }          
         else
         {
+
             if(this.gameObject.name == "Explain Pasta Box")
             {
                 GameObject.Find("AudioManager").GetComponent<AudioManager>().warning.SetActive(true);
                 tmp.transform.SetSiblingIndex(7);
-                Invoke("waitToPlayQuestion", 2f);
+                qm.PlayTutorialQuestion1();
                 this.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
             }
             else
             {
-                if (this.gameObject.name == "Try Now Box" || this.gameObject.name == "Try Again Box" || this.gameObject.name == "Finish Tutorial Box")
+                if (this.gameObject.name == "Finish Tutorial Box")
+                {
+                    var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
+                    load.LoadMainMenu();
+                }
+                else if (this.gameObject.name == "Try Again Box" )
+                {
+                    qm.resetPot();
+                    qm.resetPlate();
+                    GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+                    //var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
+                    //load.LoadHowToPlay();
+                }
+                else if(this.gameObject.name == "Try Now Box")
                 {
                     GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
                     GameObject.FindGameObjectWithTag("Shadow").SetActive(false);
@@ -85,9 +105,6 @@ public class DialogueBoxUI : MonoBehaviour
                 if(tmp != null)
                     tmp.transform.SetSiblingIndex(7);
                 this.gameObject.SetActive(false);
-                
-
-
             }
         }
             
