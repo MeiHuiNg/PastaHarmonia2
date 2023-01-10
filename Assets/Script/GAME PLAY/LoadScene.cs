@@ -12,12 +12,17 @@ public class LoadScene : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public void LoadMainGame()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("MainGamePlay");
+    }
+
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level2");
     }
 
     public void LoadMainMenu()
@@ -30,9 +35,9 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    public void LoadLevel()
+    public void ReplayGame()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitApp()

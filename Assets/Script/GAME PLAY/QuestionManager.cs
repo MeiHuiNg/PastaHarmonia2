@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class QuestionManager : MonoBehaviour
     public AudioSource Breakingplate;
     public AudioSource Win;
     public AudioSource Lose;
+    public AudioSource Serious;
 
     List<AudioClip> question = new List<AudioClip>();
     
@@ -39,8 +41,14 @@ public class QuestionManager : MonoBehaviour
             isTutorial = true;
         }
         else
-            Level = 1;    //For testing use, can remove this line once finish testing
-
+        {
+            Serious.Play();
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+                Level = 1;    //For testing use, can remove this line once finish testing
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
+                Level = 2;
+        }
+            
         Invoke("MusicQuestion",2f);    // play question on start, will modify and have a countdown function after this
         pots = GameObject.FindGameObjectsWithTag("Pot");
         oriPlateSprite = lifeSystem[0].GetComponent<Image>().sprite;
@@ -101,11 +109,18 @@ public class QuestionManager : MonoBehaviour
         
         switch(Level)
         {
-            case 1: CreateRandomQuestion(3);
+            case 1: //CreateRandomQuestion(3);
+                    question.Add(PianoKeys[0]);
+                    question.Add(PianoKeys[1]);
+                    question.Add(PianoKeys[1]);
                     AudioManager.Instance.RandomSoundEffect(question);
                     
                     break;
             case 2:
+                    question.Add(PianoKeys[2]);
+                    question.Add(PianoKeys[1]);
+                    question.Add(PianoKeys[0]);
+                    AudioManager.Instance.RandomSoundEffect(question);
                     break;
             case 3:
                     break;
@@ -146,6 +161,15 @@ public class QuestionManager : MonoBehaviour
         checkAns = false;
     }
 
+    public void resetPlate()
+    {
+        foreach (var p in lifeSystem)
+        {
+            lifecount = 3;
+            p.GetComponent<Image>().sprite = oriPlateSprite;
+        }
+    }
+
     public void checkFinalAnswer()
     {
         foreach(var p in pots)
@@ -170,7 +194,8 @@ public class QuestionManager : MonoBehaviour
             else
             {
                 answerNum++;
-                Win.Play();
+                if(answerNum==3)
+                    Win.Play();
                 Debug.Log("correct answer");
             }
          }
@@ -191,17 +216,23 @@ public class QuestionManager : MonoBehaviour
                 //loss 1 life
             }
         }
-        else   //all correct
+        else   //all corrtect
         {
             answerNum = 0; // reset
             // result canvas pop out
         }*/
     }
 
+    public void PlayTutorialQuestion1()
+    {
+        Serious.Play();
+        Invoke("PlayTutorialQuestion",2f);
+    }
     public void PlayTutorialQuestion()
     {
+        //Serious.Play();
         AudioManager.Instance.RandomSoundEffect(question);
-        StartCoroutine(wait(6.2f));
+        StartCoroutine(wait(6.15f));
     }
 
     IEnumerator wait(float s)
