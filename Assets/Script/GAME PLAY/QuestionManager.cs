@@ -13,6 +13,11 @@ public class QuestionManager : MonoBehaviour
 
     [HideInInspector] int Level=0;
 
+    [Header("Sound Effect")]
+    public AudioSource Breakingplate;
+    public AudioSource Win;
+    public AudioSource Lose;
+
     List<AudioClip> question = new List<AudioClip>();
     
 
@@ -66,10 +71,10 @@ public class QuestionManager : MonoBehaviour
 
         if (!isTutorial)
         {
-            if (lifecount < 1)
+            if (lifecount < 1)  //loseeeeeeeee
                 gameOverCanvas.SetActive(true);
             else if (answerNum == 3)
-                winCanvas.SetActive(true);
+                winCanvas.SetActive(true);  //win  
         }
         else
         {
@@ -153,15 +158,22 @@ public class QuestionManager : MonoBehaviour
                 answerNum = 0;
                 lifecount -= 1;
                 lifeSystem[lifecount].GetComponent<Image>().sprite = lifeBreak;
+                
+                if (lifecount < 1)
+                    Lose.Play();
+                else
+                    Breakingplate.Play();
+
                 resetPot();
                 break;
             }
             else
             {
                 answerNum++;
+                Win.Play();
                 Debug.Log("correct answer");
             }
-        }
+         }
         /*if(answerNum < question.Count)
         {
             if(AnsClip == question[answerNum])
