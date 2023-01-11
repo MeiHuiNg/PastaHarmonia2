@@ -24,7 +24,7 @@ public class DialogueBoxUI : MonoBehaviour
         {
             if(b.name == this.name)
             {
-                Soto[2].Play();
+                Soto[0].Play();
                 Debug.Log(currentBox);
                 break;
             }
@@ -51,6 +51,7 @@ public class DialogueBoxUI : MonoBehaviour
             tmp = GameObject.FindGameObjectWithTag("ReplayButton");
             tmp.transform.SetSiblingIndex(12);
         }
+
         DialogueText.text = DialogueLine[0];
         tutorialPasta.SetActive(true);
     }
@@ -75,7 +76,7 @@ public class DialogueBoxUI : MonoBehaviour
             if(this.gameObject.name == "Explain Pasta Box")
             {
                 GameObject.Find("AudioManager").GetComponent<AudioManager>().warning.SetActive(true);
-                tmp.transform.SetSiblingIndex(7);
+                tmp.transform.SetSiblingIndex(8);
                 qm.PlayTutorialQuestion1();
                 this.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);

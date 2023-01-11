@@ -21,9 +21,8 @@ public class QuestionManager : MonoBehaviour
     public AudioSource Serious;
 
     List<AudioClip> question = new List<AudioClip>();
-    
 
-    GameObject [] pots;
+    public GameObject [] pots;
     int answerNum = 0;
     int lifecount = 3;
     int checkAnsNum = 0;
@@ -35,6 +34,7 @@ public class QuestionManager : MonoBehaviour
     List<onSelectEvent> PotList = new List<onSelectEvent>();
     private void Start()
     {
+        answerNum = 0;
         if (GameObject.FindGameObjectWithTag("TutorialCharacter"))
         {
             Level = 0;
@@ -50,7 +50,7 @@ public class QuestionManager : MonoBehaviour
         }
             
         Invoke("MusicQuestion",2f);    // play question on start, will modify and have a countdown function after this
-        pots = GameObject.FindGameObjectsWithTag("Pot");
+       // pots = GameObject.FindGameObjectsWithTag("Pot");
         oriPlateSprite = lifeSystem[0].GetComponent<Image>().sprite;
 
     }
@@ -71,7 +71,6 @@ public class QuestionManager : MonoBehaviour
                 Debug.Log(checkAnsNum + " " + pots.Length);
                 checkAns = true;
                 checkFinalAnswer();
-
             }
             else
                 checkAnsNum = 0;
@@ -110,6 +109,7 @@ public class QuestionManager : MonoBehaviour
         switch(Level)
         {
             case 1: //CreateRandomQuestion(3);
+                    question.Clear();
                     question.Add(PianoKeys[0]);
                     question.Add(PianoKeys[1]);
                     question.Add(PianoKeys[1]);
@@ -117,6 +117,7 @@ public class QuestionManager : MonoBehaviour
                     
                     break;
             case 2:
+                    question.Clear();
                     question.Add(PianoKeys[2]);
                     question.Add(PianoKeys[1]);
                     question.Add(PianoKeys[0]);
@@ -126,7 +127,9 @@ public class QuestionManager : MonoBehaviour
                     break;
             case 4:
                     break;
-            case 0: question.Add(PianoKeys[0]);
+            case 0:
+                    question.Clear();
+                    question.Add(PianoKeys[0]);
                     question.Add(PianoKeys[1]);
                     question.Add(PianoKeys[2]);
                     break;
@@ -139,7 +142,7 @@ public class QuestionManager : MonoBehaviour
     {
         for(int i = 0; i < num; i++)
         {
-            question.Add(PianoKeys[Random.Range(0, 2)]); //
+           // question.Add(PianoKeys[Random.Range(0, 2)]); //
         }
     }
 
@@ -172,17 +175,17 @@ public class QuestionManager : MonoBehaviour
 
     public void checkFinalAnswer()
     {
+        
         foreach(var p in pots)
         {
             p.GetComponent<onSelectEvent>().deselected();
             var ans = p.transform.GetChild(0).gameObject.GetComponent<AudioSource>().clip;
             if (ans != question[answerNum])
             {
-                Debug.Log("wrong answer reset the answer");
                 answerNum = 0;
                 lifecount -= 1;
                 lifeSystem[lifecount].GetComponent<Image>().sprite = lifeBreak;
-                
+
                 if (lifecount < 1)
                     Lose.Play();
                 else
@@ -193,34 +196,11 @@ public class QuestionManager : MonoBehaviour
             }
             else
             {
-                answerNum++;
-                if(answerNum==3)
+                answerNum++;               
+                if (answerNum==3)
                     Win.Play();
-                Debug.Log("correct answer");
             }
-         }
-        /*if(answerNum < question.Count)
-        {
-            if(AnsClip == question[answerNum])
-            {
-                answerNum++;
-                Debug.Log("correct answer");
-                // light the bulb etc.....
-            }
-            else
-            {
-                Debug.Log("wrong answer reset the answer");
-                answerNum = 0;
-                lifecount -= 1;
-                lifeSystem[lifecount].GetComponent<Image>().sprite = lifeBreak;
-                //loss 1 life
-            }
-        }
-        else   //all corrtect
-        {
-            answerNum = 0; // reset
-            // result canvas pop out
-        }*/
+        }      
     }
 
     public void PlayTutorialQuestion1()
