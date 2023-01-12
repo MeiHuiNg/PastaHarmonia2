@@ -44,4 +44,9 @@ public class LoadScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Level2Ending()
+    {
+        Invoke("LoadMainMenu",3f);
+    }
 }

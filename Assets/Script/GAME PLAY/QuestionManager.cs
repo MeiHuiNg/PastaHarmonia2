@@ -12,6 +12,10 @@ public class QuestionManager : MonoBehaviour
     [SerializeField] GameObject winCanvas;
     [SerializeField] GameObject gameOverCanvas;
 
+    [SerializeField] Image[] tomatoSystem;
+    [SerializeField] Sprite tomatoGrey;
+
+
     [HideInInspector] int Level=0;
 
     [Header("Sound Effect")]
@@ -190,6 +194,19 @@ public class QuestionManager : MonoBehaviour
                     Lose.Play();
                 else
                     Breakingplate.Play();
+
+                if (lifecount == 2)
+                {
+                    tomatoSystem[2].GetComponent<Image>().sprite = tomatoGrey;
+                }else if(lifecount == 1)
+                {
+                    tomatoSystem[1].GetComponent<Image>().sprite = tomatoGrey;
+                    tomatoSystem[2].GetComponent<Image>().sprite = tomatoGrey;
+                }
+                else
+                {
+
+                }
 
                 resetPot();
                 break;

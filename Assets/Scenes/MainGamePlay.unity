@@ -6063,6 +6063,11 @@ MonoBehaviour:
   lifeBreak: {fileID: 21300000, guid: cb57f355f0694fe48b0a0fec7ed27a47, type: 3}
   winCanvas: {fileID: 1229078556}
   gameOverCanvas: {fileID: 383542310}
+  tomatoSystem:
+  - {fileID: 306844765}
+  - {fileID: 1388657626}
+  - {fileID: 1888054720}
+  tomatoGrey: {fileID: 21300000, guid: 7c579021c7a15ab49b1d2a1bf67d2cb1, type: 3}
   Breakingplate: {fileID: 1074901913}
   Win: {fileID: 1837495293}
   Lose: {fileID: 1129978011}
