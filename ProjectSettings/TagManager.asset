@@ -10,6 +10,8 @@ TagManager:
   - ReplayButton
   - TutorialCharacter
   - Shadow
+  - Unlock
+  - UnlockText
   layers:
   - Default
   - TransparentFX
