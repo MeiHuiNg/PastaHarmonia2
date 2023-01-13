@@ -152,7 +152,7 @@ public class QuestionManager : MonoBehaviour
 
     public void ReplayQuestion()    // For replay button
     {
-        AudioManager.Instance.RandomSoundEffect(question);
+        AudioManager.Instance.Replay(question);
     }
 
     public void resetPot()

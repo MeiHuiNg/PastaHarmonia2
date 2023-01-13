@@ -57,7 +57,26 @@ public class AudioManager : MonoBehaviour
 			warning.SetActive(false);
 			isPlay = false;
 		}
-		
+	}
+
+	IEnumerator ReplayQuestion(List<AudioClip> clips)
+	{
+		if (!isPlay)
+		{
+			isPlay = true;
+			//warning.SetActive(true);
+			foreach (var clip in clips)
+			{
+				//yield return new WaitForSeconds(0.5f);
+				EffectsSource.clip = clip;
+				EffectsSource.Play();
+				yield return new WaitForSeconds(2);
+			}
+			//shadow.SetActive(false);
+			//warning.SetActive(false);
+			isPlay = false;
+		}
+
 	}
 	// Play a single clip through the music source.
 	public void PlayMusic(AudioClip clip)
@@ -72,5 +91,11 @@ public class AudioManager : MonoBehaviour
 			
 	}
 
-	
+	public void Replay(List<AudioClip> clips)
+	{
+		StartCoroutine(ReplayQuestion(clips));
+
+	}
+
+
 }
