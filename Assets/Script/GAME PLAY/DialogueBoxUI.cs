@@ -51,10 +51,15 @@ public class DialogueBoxUI : MonoBehaviour
             tmp = GameObject.FindGameObjectWithTag("ReplayButton");
             tmp.transform.SetSiblingIndex(12);
         }
-
+        else if (this.gameObject.name == "Try Again Box")
+        {
+            tutorialPasta.SetActive(true);
+        }
         DialogueText.text = DialogueLine[0];
         tutorialPasta.SetActive(true);
     }
+
+
 
     public void waitToPlayQuestion()
     {
@@ -107,6 +112,7 @@ public class DialogueBoxUI : MonoBehaviour
                     tmp.transform.SetSiblingIndex(7);
                 this.gameObject.SetActive(false);
             }
+            currentLine=0;
         }
             
     }

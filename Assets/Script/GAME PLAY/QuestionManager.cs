@@ -91,12 +91,11 @@ public class QuestionManager : MonoBehaviour
         {
             if (lifecount < 1)
             {
+                GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().tutorialPasta.SetActive(true);
+                GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().DialogueBox[6].SetActive(true);
+                GameObject.Find("Try Again Box").GetComponent<DialogueBoxUI>().Soto[0].Play();
                 foreach (var p in pots)
                 {
-                    GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().DialogueBox[6].SetActive(true);
-                    answerNum = 0;
-                    lifecount = 3;
-                    lifeSystem[lifecount].GetComponent<Image>().sprite = oriPlateSprite;
                     resetPot();
                 }
             }
@@ -157,12 +156,15 @@ public class QuestionManager : MonoBehaviour
 
     public void resetPot()
     {
-        foreach(var p in pots)
+        answerNum = 0;
+        lifecount = 3;
+        foreach (var p in pots)
         {
             var childpot = p.transform.GetChild(0).gameObject.GetComponent<Image>();
             p.GetComponent<Image>().sprite = p.GetComponent<onSelectEvent>().OriImage;
             childpot.sprite = null;
             childpot.color = new Color32(255, 255, 255, 0);
+            lifeSystem[lifecount - 1].GetComponent<Image>().sprite = oriPlateSprite;
         }
         checkAnsNum = 0;
         checkAns = false;
