@@ -1187,9 +1187,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9515ac60257b2db499e049bc2f390564, type: 3}
+    m_Font: {fileID: 12800000, guid: 9cd03972eee0ecd48b1b962f6a43e146, type: 3}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
@@ -1433,9 +1433,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9515ac60257b2db499e049bc2f390564, type: 3}
+    m_Font: {fileID: 12800000, guid: 9cd03972eee0ecd48b1b962f6a43e146, type: 3}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
@@ -8114,9 +8114,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9515ac60257b2db499e049bc2f390564, type: 3}
+    m_Font: {fileID: 12800000, guid: 9cd03972eee0ecd48b1b962f6a43e146, type: 3}
     m_FontSize: 25
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 50
@@ -8173,7 +8173,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -185.82, y: -52.265}
-  m_SizeDelta: {x: 250, y: 100}
+  m_SizeDelta: {x: 255, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338578288
 MonoBehaviour:

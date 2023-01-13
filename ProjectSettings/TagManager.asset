@@ -12,6 +12,7 @@ TagManager:
   - Shadow
   - Unlock
   - UnlockText
+  - TryAgain
   layers:
   - Default
   - TransparentFX
