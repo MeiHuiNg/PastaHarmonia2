@@ -102,7 +102,10 @@ public class QuestionManager : MonoBehaviour
             }
                 
             else if (answerNum == 3)
+            {
+                //GameObject.FindGameObjectWithTag("Shadow").SetActive(true);
                 GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().DialogueBox[7].SetActive(true);
+            }
         }
         
     }
