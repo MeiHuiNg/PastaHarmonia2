@@ -54,6 +54,7 @@ public class DialogueBoxUI : MonoBehaviour
         else if (this.gameObject.name == "Try Again Box")
         {
             tutorialPasta.SetActive(true);
+            GameObject.FindGameObjectWithTag("Shadow").SetActive(true);
         }
         DialogueText.text = DialogueLine[0];
         tutorialPasta.SetActive(true);
@@ -81,7 +82,7 @@ public class DialogueBoxUI : MonoBehaviour
             if(this.gameObject.name == "Explain Pasta Box")
             {
                 GameObject.Find("AudioManager").GetComponent<AudioManager>().warning.SetActive(true);
-                tmp.transform.SetSiblingIndex(8);
+                tmp.transform.SetSiblingIndex(6);
                 qm.PlayTutorialQuestion1();
                 this.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
@@ -109,7 +110,7 @@ public class DialogueBoxUI : MonoBehaviour
                 else
                     DialogueBox[currentBox + 1].SetActive(true);
                 if(tmp != null)
-                    tmp.transform.SetSiblingIndex(7);
+                    tmp.transform.SetSiblingIndex(5);
                 this.gameObject.SetActive(false);
             }
             currentLine=0;
