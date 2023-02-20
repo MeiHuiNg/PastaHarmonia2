@@ -17,22 +17,27 @@ public class LoadScene : MonoBehaviour
 
     public void LoadMainGame()
     {
-        SceneManager.LoadScene("MainGamePlay");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void LoadLevel2()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("Level 2");
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("StartPage");
+        SceneManager.LoadScene("Main Page");
     }
 
     public void LoadHowToPlay()
     {
         SceneManager.LoadScene("Tutorial");
+    }
+
+    public void LoadFreeMode()
+    {
+        SceneManager.LoadScene("Free Mode");
     }
 
     public void ReplayGame()
