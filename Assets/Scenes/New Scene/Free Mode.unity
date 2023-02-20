@@ -836,8 +836,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 42acb9e579a76e740acbd6d976298fed,
-      type: 3}
+    m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 79647d6285333834d9ae887294fbb38f, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -913,7 +912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea71ae48ded79c74ca1d66b1a8cd256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pianoKeyButton: {fileID: 0}
 --- !u!82 &539203541
 AudioSource:
   m_ObjectHideFlags: 0
@@ -935,7 +933,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 235.72058
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1079,8 +1077,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 576fb4b3577a2264c95815a15955b667,
-      type: 3}
+    m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 576fb4b3577a2264c95815a15955b667, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -1156,7 +1153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea71ae48ded79c74ca1d66b1a8cd256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pianoKeyButton: {fileID: 0}
 --- !u!82 &659770727
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1178,7 +1174,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 180.22192
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1440,8 +1436,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: cfc14627c5ba91346a5b7fde357c0525,
-      type: 3}
+    m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cfc14627c5ba91346a5b7fde357c0525, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -1517,7 +1512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea71ae48ded79c74ca1d66b1a8cd256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pianoKeyButton: {fileID: 0}
 --- !u!82 &732385803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1539,7 +1533,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 174.96259
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2374,7 +2368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea71ae48ded79c74ca1d66b1a8cd256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pianoKeyButton: {fileID: 0}
 --- !u!114 &1014611683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,7 +2386,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2404,7 +2397,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 21300000, guid: a16e3e930316e9d4bbe582cdf3ffbdfc, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2488,7 +2481,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 193.4607
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
