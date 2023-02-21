@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour
                 if (disturb[num] != null)
                 {
 					DisturbSource.clip = disturb[num];
-					DisturbSource.volume = .35f;
+					DisturbSource.volume = .25f;
 					DisturbSource.Play();
                 }
 				num++;
@@ -127,7 +127,7 @@ public class AudioManager : MonoBehaviour
 				if (disturb[numd] != null)
 				{
 					DisturbSource.clip = disturb[numd];
-					DisturbSource.volume = .35f;
+					DisturbSource.volume = .25f;
 					DisturbSource.Play();
 				}
 				numd++;

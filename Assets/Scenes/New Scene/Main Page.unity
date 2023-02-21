@@ -1140,7 +1140,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9cd03972eee0ecd48b1b962f6a43e146, type: 3}
-    m_FontSize: 57
+    m_FontSize: 53
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -1151,8 +1151,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0.5
-  m_Text: RONNY IS SHELLY'S BEST FRIEND. SAME AS SHELLY, YOU CAN FOUND A SMALL PIECE
-    OF MINCED MEAT IN HIS STOMACH TOO.
+  m_Text: 'Ronny is Shelly''s best friend. He always wear the blue little shoes that
+    Shelly gave him on his brthday. Same as Shelly, you can found a small piece of
+    minced meat in his stomach. '
 --- !u!222 &167551274
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5813,7 +5814,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 04b891b1c857e9c4fb383737748e4726, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14347,6 +14348,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 133561095}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 436097056}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
