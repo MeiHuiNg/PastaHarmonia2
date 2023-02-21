@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/New Scene/Level 2.unity
     guid: 2e9828f9d0c97d9408aeb02d7eeb3340
   - enabled: 1
+    path: Assets/Scenes/New Scene/Level 3.unity
+    guid: 05d723834a1779545b2c7b15d097259d
+  - enabled: 1
+    path: Assets/Scenes/New Scene/Level 4.unity
+    guid: 8995dfa8c592e9f4abeabc6730742e74
+  - enabled: 1
     path: Assets/Scenes/New Scene/Free Mode.unity
     guid: ce8070bad49763448bfa751153db03c6
   m_configObjects: {}

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UITween : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameObject backPanel, homeButton, NextLevelButton,
 
-    // Update is called once per frame
-    void Update()
+    Tomato1, Tomato2, Tomato3, Amazza, rabion, wheel;
+
+    private void Start()
     {
-        
+        LeanTween.rotateAround(wheel, Vector3.forward, -360, 10f).setLoopClamp();
+        LeanTween.scale(Amazza, new Vector3(1, 1, 1), 2).setDelay(.5f).setEase(LeanTweenType.easeOutElastic);
+        ;
     }
 }

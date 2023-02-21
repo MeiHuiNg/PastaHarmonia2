@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour
 {
+    public static QuestionManager instance;
     [SerializeField] AudioClip[] PianoKeys;
     [SerializeField] Image[] lifeSystem;
     [SerializeField] Sprite lifeBreak;
     [SerializeField] GameObject winCanvas;
     [SerializeField] GameObject gameOverCanvas;
+    [SerializeField] GameObject replayCanvas;
 
     [SerializeField] Image[] tomatoSystem;
     [SerializeField] Sprite tomatoGrey;
 
 
-    [HideInInspector] int Level=0;
+    [HideInInspector] public int Level=0;
 
     [Header("Sound Effect")]
     public AudioSource Breakingplate;
@@ -25,6 +27,7 @@ public class QuestionManager : MonoBehaviour
     public AudioSource Serious;
 
     List<AudioClip> question = new List<AudioClip>();
+    AudioClip []disturb = new AudioClip [4];
 
     public GameObject [] pots;
     int answerNum = 0;
@@ -32,6 +35,7 @@ public class QuestionManager : MonoBehaviour
     int checkAnsNum = 0;
     bool checkAns;
     bool isTutorial;
+    bool replay;
     Sprite oriPlateSprite;
     
 
@@ -51,6 +55,10 @@ public class QuestionManager : MonoBehaviour
                 Level = 1;    //For testing use, can remove this line once finish testing
             else if (SceneManager.GetActiveScene().buildIndex == 3)
                 Level = 2;
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
+                Level = 3;
+            else if (SceneManager.GetActiveScene().buildIndex == 5)
+                Level = 4;
         }
             
         Invoke("MusicQuestion",2f);    // play question on start, will modify and have a countdown function after this
@@ -84,7 +92,7 @@ public class QuestionManager : MonoBehaviour
         {
             if (lifecount < 1)  //loseeeeeeeee
                 gameOverCanvas.SetActive(true);
-            else if (answerNum == 3)
+            else if (answerNum == pots.Length)
                 winCanvas.SetActive(true);  //win  
         }
         else
@@ -131,8 +139,21 @@ public class QuestionManager : MonoBehaviour
                     AudioManager.Instance.RandomSoundEffect(question);
                     break;
             case 3:
+                    question.Clear();
+                    question.Add(PianoKeys[Random.Range(0,3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    AudioManager.Instance.RandomSoundEffect(question);
                     break;
             case 4:
+                    question.Clear();
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    disturb[Random.Range(0, 2)] = PianoKeys[Random.Range(0, 3)];
+                    AudioManager.Instance.RandomSoundEffect_Disturb(question, disturb);
                     break;
             case 0:
                     question.Clear();
@@ -155,7 +176,16 @@ public class QuestionManager : MonoBehaviour
 
     public void ReplayQuestion()    // For replay button
     {
-        AudioManager.Instance.Replay(question);
+        if (!replay )
+        {
+            if(Level == 4)
+                AudioManager.Instance.Replay_Disturb(question, disturb);
+            else
+                AudioManager.Instance.Replay(question);
+            replay = true;
+            replayCanvas.SetActive(false);
+        }
+        
     }
 
     public void resetPot()
@@ -219,7 +249,7 @@ public class QuestionManager : MonoBehaviour
             else
             {
                 answerNum++;               
-                if (answerNum==3)
+                if (answerNum==pots.Length)
                     Win.Play();
             }
         }      
@@ -234,7 +264,7 @@ public class QuestionManager : MonoBehaviour
     {
         //Serious.Play();
         AudioManager.Instance.RandomSoundEffect(question);
-        StartCoroutine(wait(6.15f));
+        StartCoroutine(wait(4.65f));
     }
 
     IEnumerator wait(float s)

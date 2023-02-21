@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
 	// Audio players components.
 	public AudioSource EffectsSource;
+	public AudioSource DisturbSource;
 	// Random pitch adjustment range.
 	public float LowPitchRange = .95f;
 	public float HighPitchRange = 1.05f;
@@ -14,6 +15,8 @@ public class AudioManager : MonoBehaviour
 
 	[SerializeField] public GameObject shadow;
 	[SerializeField] public GameObject warning;
+	[SerializeField] public GameObject Rabion;
+	[SerializeField] public GameObject Dialogue;
 
 	bool isPlay;
 
@@ -51,9 +54,39 @@ public class AudioManager : MonoBehaviour
 				//yield return new WaitForSeconds(0.5f);
 				EffectsSource.clip = clip;
 				EffectsSource.Play();
-				yield return new WaitForSeconds(2);
+				yield return new WaitForSeconds(1.5f);
 			}
 			shadow.SetActive(false);
+			warning.SetActive(false);
+			isPlay = false;
+		}
+	}
+
+	IEnumerator Play_disturb(List<AudioClip> clips, AudioClip [] disturb)
+	{
+		if (!isPlay)
+		{
+			int num = 0;
+			isPlay = true;
+			warning.SetActive(true);
+			foreach (var clip in clips)
+			{
+				//yield return new WaitForSeconds(0.5f);
+				EffectsSource.clip = clip;
+				EffectsSource.volume = 1f;
+				EffectsSource.Play();
+				Debug.Log(EffectsSource.clip.name);
+                if (disturb[num] != null)
+                {
+					DisturbSource.clip = disturb[num];
+					DisturbSource.volume = .35f;
+					DisturbSource.Play();
+                }
+				num++;
+				yield return new WaitForSeconds(1.5f);
+			}
+			Rabion.SetActive(true);
+			Dialogue.SetActive(true);
 			warning.SetActive(false);
 			isPlay = false;
 		}
@@ -78,6 +111,35 @@ public class AudioManager : MonoBehaviour
 		}
 
 	}
+
+	IEnumerator ReplayQuestion_Disturb(List<AudioClip> clips, AudioClip[] disturb)
+	{
+		if (!isPlay)
+		{
+			int numd = 0;
+			isPlay = true;
+			//warning.SetActive(true);
+			foreach (var clip in clips)
+			{
+				//yield return new WaitForSeconds(0.5f);
+				EffectsSource.clip = clip;
+				EffectsSource.Play();
+				if (disturb[numd] != null)
+				{
+					DisturbSource.clip = disturb[numd];
+					DisturbSource.volume = .35f;
+					DisturbSource.Play();
+				}
+				numd++;
+				yield return new WaitForSeconds(2);
+			}
+			
+			//shadow.SetActive(false);
+			//warning.SetActive(false);
+			isPlay = false;
+		}
+
+	}
 	// Play a single clip through the music source.
 	public void PlayMusic(AudioClip clip)
 	{
@@ -91,11 +153,19 @@ public class AudioManager : MonoBehaviour
 			
 	}
 
-	public void Replay(List<AudioClip> clips)
+	public void RandomSoundEffect_Disturb(List<AudioClip> clips, AudioClip []disturb)
 	{
-		StartCoroutine(ReplayQuestion(clips));
+		StartCoroutine(Play_disturb(clips,disturb));
 
 	}
 
+	public void Replay(List<AudioClip> clips)
+	{
+		StartCoroutine(ReplayQuestion(clips));
+	}
 
+	public void Replay_Disturb(List<AudioClip> clips, AudioClip[] disturb)
+	{
+		StartCoroutine(ReplayQuestion_Disturb(clips, disturb));
+	}
 }

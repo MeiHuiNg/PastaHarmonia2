@@ -15,7 +15,7 @@ public class LoadScene : MonoBehaviour
         //DontDestroyOnLoad(this);
     }
 
-    public void LoadMainGame()
+    public void LoadLevel1()
     {
         SceneManager.LoadScene("Level 1");
     }
@@ -23,6 +23,15 @@ public class LoadScene : MonoBehaviour
     public void LoadLevel2()
     {
         SceneManager.LoadScene("Level 2");
+    }
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
+
+    public void LoadLevel4()
+    {
+        SceneManager.LoadScene("Level 4");
     }
 
     public void LoadMainMenu()
@@ -50,7 +59,7 @@ public class LoadScene : MonoBehaviour
         Application.Quit();
     }
 
-    public void Level2Ending()
+    public void Level4Ending()
     {
         Invoke("LoadMainMenu",3f);
     }
