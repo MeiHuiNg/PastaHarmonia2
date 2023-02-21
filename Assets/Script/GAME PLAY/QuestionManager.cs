@@ -179,10 +179,14 @@ public class QuestionManager : MonoBehaviour
         if (!replay )
         {
             if(Level == 4)
+            {
                 AudioManager.Instance.Replay_Disturb(question, disturb);
+            }
             else
+            {
+                replay = true;
                 AudioManager.Instance.Replay(question);
-            replay = true;
+            }
             replayCanvas.SetActive(false);
         }
         
