@@ -45,7 +45,10 @@ public class onSelectEvent : MonoBehaviour
         this.gameObject.transform.localScale = scale;
         if(this.gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().sprite == null)
             this.gameObject.GetComponent<Image>().sprite = OriImage;
+        
+       
         isPress = false;
+
     }
 
     IEnumerator wait()

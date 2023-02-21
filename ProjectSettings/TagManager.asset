@@ -13,6 +13,7 @@ TagManager:
   - Unlock
   - UnlockText
   - TryAgain
+  - PianoKey
   layers:
   - Default
   - TransparentFX

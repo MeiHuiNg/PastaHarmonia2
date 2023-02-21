@@ -82,46 +82,44 @@ public class DialogueBoxUI : MonoBehaviour
 
             if(this.gameObject.name == "Explain Pasta Box")
             {
+                tmp.transform.SetSiblingIndex(7);
+            }
+            
+            if (this.gameObject.name == "Finish Tutorial Box")
+            {
+                var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
+                load.LoadMainMenu();
+            }
+            else if (this.gameObject.name == "Try Again Box")
+            {
+                qm.resetPot();
+                qm.resetPlate();
+                GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+                AudioManager.Instance.shadow.SetActive(false);
+                //var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
+                //load.LoadHowToPlay();
+            }
+            else if (this.gameObject.name == "Try Now Box")
+            {
+                GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
                 GameObject.Find("AudioManager").GetComponent<AudioManager>().warning.SetActive(true);
-                tmp.transform.SetSiblingIndex(6);
+                    
                 qm.PlayTutorialQuestion1();
                 this.gameObject.SetActive(false);
-                GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+                //GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
             }
+            else if (DialogueBox.Length > 1)
+                DialogueBox[currentBox + 1].SetActive(true);
             else
             {
-                if (this.gameObject.name == "Finish Tutorial Box")
-                {
-                    var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
-                    load.LoadMainMenu();
-                }
-                else if (this.gameObject.name == "Try Again Box")
-                {
-                    qm.resetPot();
-                    qm.resetPlate();
-                    GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
-                    AudioManager.Instance.shadow.SetActive(false);
-                    //var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
-                    //load.LoadHowToPlay();
-                }
-                else if (this.gameObject.name == "Try Now Box")
-                {
-                    GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
-                    AudioManager.Instance.shadow.SetActive(false);
-                }
-                else
-                    if (DialogueBox.Length > 1)
-                    DialogueBox[currentBox + 1].SetActive(true);
-                else
-                {
-                    tutorialPasta.SetActive(false);
-                    AudioManager.Instance.shadow.SetActive(false);
-                }
-                    
-                if (tmp != null)
-                    tmp.transform.SetSiblingIndex(5);
-                this.gameObject.SetActive(false);
+                tutorialPasta.SetActive(false);
+                AudioManager.Instance.shadow.SetActive(false);
             }
+                    
+            if (tmp != null)
+                tmp.transform.SetSiblingIndex(4);
+            this.gameObject.SetActive(false);
+            
             currentLine=0;
         }
             

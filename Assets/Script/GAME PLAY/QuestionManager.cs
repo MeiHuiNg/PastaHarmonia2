@@ -105,7 +105,7 @@ public class QuestionManager : MonoBehaviour
                 
                 answerNum = 0;
                 lifecount = 3;
-                replay = false;
+                
                 resetPot();
                 resetPlate();
             }
@@ -177,20 +177,15 @@ public class QuestionManager : MonoBehaviour
 
     public void ReplayQuestion()    // For replay button
     {
-        if (!replay )
-        {
             if(Level == 4)
             {
                 AudioManager.Instance.Replay_Disturb(question, disturb);
             }
             else
             {
-                replay = true;
-                replayCanvas.SetActive(false);
                 AudioManager.Instance.Replay(question);
             }
-            
-        }
+          
         
     }
 
@@ -276,8 +271,8 @@ public class QuestionManager : MonoBehaviour
     IEnumerator wait(float s)
     {
         yield return new WaitForSeconds(s);
-        GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().DialogueBox[2].SetActive(true);
-        AudioManager.Instance.shadow.SetActive(true);
+        //GameObject.Find("Main Canvas").GetComponent<DialogueBoxUI>().DialogueBox[2].SetActive(true);
+        //AudioManager.Instance.shadow.SetActive(true);
 
     }
 }
