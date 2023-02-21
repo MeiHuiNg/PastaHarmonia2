@@ -17,7 +17,7 @@ public class DialogueBoxUI : MonoBehaviour
     GameObject tmp;
     private void Start()
     {
-        //DialogueLine[0] = "BENVENUTO A PASTA HARMONIA!";
+        
         qm = GameObject.Find("QuestionManager").GetComponent<QuestionManager>();
 
         foreach(var b in DialogueBox)
@@ -30,8 +30,8 @@ public class DialogueBoxUI : MonoBehaviour
             }
             currentBox++;
         }
-
-        if(this.gameObject.name == "Explain Pasta Box")
+       
+        if (this.gameObject.name == "Explain Pasta Box")
         {
             tmp = GameObject.FindGameObjectWithTag("PastaCharacter");
             tmp.transform.SetSiblingIndex(12);
@@ -54,8 +54,9 @@ public class DialogueBoxUI : MonoBehaviour
         else if (this.gameObject.name == "Try Again Box")
         {
             tutorialPasta.SetActive(true);
-            GameObject.FindGameObjectWithTag("Shadow").SetActive(true);
+            AudioManager.Instance.shadow.SetActive(true);
         }
+        
         DialogueText.text = DialogueLine[0];
         tutorialPasta.SetActive(true);
     }
@@ -94,22 +95,30 @@ public class DialogueBoxUI : MonoBehaviour
                     var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
                     load.LoadMainMenu();
                 }
-                else if (this.gameObject.name == "Try Again Box" )
+                else if (this.gameObject.name == "Try Again Box")
                 {
                     qm.resetPot();
                     qm.resetPlate();
                     GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+                    AudioManager.Instance.shadow.SetActive(false);
                     //var load = GameObject.Find("LoadSceneManager").GetComponent<LoadScene>();
                     //load.LoadHowToPlay();
                 }
-                else if(this.gameObject.name == "Try Now Box")
+                else if (this.gameObject.name == "Try Now Box")
                 {
                     GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
-                    GameObject.FindGameObjectWithTag("Shadow").SetActive(false);
+                    AudioManager.Instance.shadow.SetActive(false);
                 }
                 else
+                    if (DialogueBox.Length > 1)
                     DialogueBox[currentBox + 1].SetActive(true);
-                if(tmp != null)
+                else
+                {
+                    tutorialPasta.SetActive(false);
+                    AudioManager.Instance.shadow.SetActive(false);
+                }
+                    
+                if (tmp != null)
                     tmp.transform.SetSiblingIndex(5);
                 this.gameObject.SetActive(false);
             }
