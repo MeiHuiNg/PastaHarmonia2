@@ -105,6 +105,7 @@ public class QuestionManager : MonoBehaviour
                 
                 answerNum = 0;
                 lifecount = 3;
+                replay = false;
                 resetPot();
                 resetPlate();
             }
@@ -152,7 +153,7 @@ public class QuestionManager : MonoBehaviour
                     question.Add(PianoKeys[Random.Range(0, 3)]);
                     question.Add(PianoKeys[Random.Range(0, 3)]);
                     question.Add(PianoKeys[Random.Range(0, 3)]);
-                    disturb[Random.Range(0, 2)] = PianoKeys[Random.Range(0, 3)];
+                    disturb[0] = PianoKeys[Random.Range(0, 3)];
                     AudioManager.Instance.RandomSoundEffect_Disturb(question, disturb);
                     break;
             case 0:
