@@ -185,9 +185,10 @@ public class QuestionManager : MonoBehaviour
             else
             {
                 replay = true;
+                replayCanvas.SetActive(false);
                 AudioManager.Instance.Replay(question);
             }
-            replayCanvas.SetActive(false);
+            
         }
         
     }
