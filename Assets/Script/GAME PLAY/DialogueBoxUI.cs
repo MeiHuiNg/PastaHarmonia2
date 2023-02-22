@@ -108,6 +108,15 @@ public class DialogueBoxUI : MonoBehaviour
                 this.gameObject.SetActive(false);
                 //GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
             }
+            else if (this.gameObject.name == "Dialogue")
+            {
+                GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+                GameObject.Find("AudioManager").GetComponent<AudioManager>().warning.SetActive(true);
+                Debug.Log("ss");
+                QuestionManager.instance.playLevel4Invoke();
+                this.gameObject.SetActive(false);
+                //GameObject.FindGameObjectWithTag("TutorialCharacter").SetActive(false);
+            }
             else if (DialogueBox.Length > 1)
                 DialogueBox[currentBox + 1].SetActive(true);
             else

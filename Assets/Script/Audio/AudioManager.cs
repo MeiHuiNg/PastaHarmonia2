@@ -85,8 +85,7 @@ public class AudioManager : MonoBehaviour
 				num++;
 				yield return new WaitForSeconds(1.5f);
 			}
-			Rabion.SetActive(true);
-			Dialogue.SetActive(true);
+			shadow.SetActive(false);
 			warning.SetActive(false);
 			isPlay = false;
 		}
