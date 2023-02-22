@@ -72,8 +72,11 @@ public class QuestionManager : MonoBehaviour
                 Serious.Play();
                 Level = 3;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 5) { }
+            else if (SceneManager.GetActiveScene().buildIndex == 5)
+            {
                 Level = 4;
+            }
+               
         }
             
         Invoke("MusicQuestion",2f);    // play question on start, will modify and have a countdown function after this
