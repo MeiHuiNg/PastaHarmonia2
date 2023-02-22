@@ -141,19 +141,19 @@ public class QuestionManager : MonoBehaviour
                     break;
             case 3:
                     question.Clear();
-                    question.Add(PianoKeys[Random.Range(0,3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
+                    question.Add(PianoKeys[Random.Range(0,4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
                     AudioManager.Instance.RandomSoundEffect(question);
                     break;
             case 4:
                     question.Clear();
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    question.Add(PianoKeys[Random.Range(0, 3)]);
-                    disturb[0] = PianoKeys[Random.Range(0, 3)];
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    question.Add(PianoKeys[Random.Range(0, 4)]);
+                    disturb[0] = PianoKeys[Random.Range(0, 4)];
                     AudioManager.Instance.RandomSoundEffect_Disturb(question, disturb);
                     break;
             case 0:

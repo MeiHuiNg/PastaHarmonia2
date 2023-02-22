@@ -5,7 +5,7 @@ using UnityEngine;
 public class UITween : MonoBehaviour
 {
     [SerializeField]
-    GameObject backPanel, homeButton, NextLevelButton,
+    GameObject backPanel, homeButton, NextLevelButton, retryButton,
 
     Tomato1, Tomato2, Tomato3, Amazza, rabion, wheel;
 
@@ -29,7 +29,7 @@ public class UITween : MonoBehaviour
         LeanTween.scale(rabion, new Vector3(1, 1, 1), 2).setDelay(3f).setEase(LeanTweenType.easeOutElastic);
         LeanTween.scale(NextLevelButton, new Vector3(1, 1, 1), 2).setDelay(4f).setEase(LeanTweenType.easeOutCubic);
         LeanTween.scale(homeButton, new Vector3(1, 1, 1), 2).setDelay(4f).setEase(LeanTweenType.easeOutCubic);
-        
+        LeanTween.scale(retryButton, new Vector3(1, 1, 1), 2).setDelay(4f).setEase(LeanTweenType.easeOutCubic);
     }
 
     IEnumerator playTomato(float w)
