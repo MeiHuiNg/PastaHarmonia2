@@ -40,24 +40,39 @@ public class QuestionManager : MonoBehaviour
     
 
     List<onSelectEvent> PotList = new List<onSelectEvent>();
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
     private void Start()
     {
         answerNum = 0;
-        if (GameObject.FindGameObjectWithTag("TutorialCharacter"))
+        if (GameObject.FindGameObjectWithTag("TutorialCharacter") && (SceneManager.GetActiveScene().buildIndex ==1))
         {
             Level = 0;
             isTutorial = true;
         }
-        else
+        else 
         {
-            Serious.Play();
+            
             if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                Serious.Play();
                 Level = 1;    //For testing use, can remove this line once finish testing
+            }
             else if (SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                Serious.Play();
                 Level = 2;
+            }
             else if (SceneManager.GetActiveScene().buildIndex == 4)
+            {
+                Serious.Play();
                 Level = 3;
-            else if (SceneManager.GetActiveScene().buildIndex == 5)
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 5) { }
                 Level = 4;
         }
             
@@ -154,7 +169,7 @@ public class QuestionManager : MonoBehaviour
                     question.Add(PianoKeys[Random.Range(0, 4)]);
                     question.Add(PianoKeys[Random.Range(0, 4)]);
                     disturb[0] = PianoKeys[Random.Range(0, 4)];
-                    AudioManager.Instance.RandomSoundEffect_Disturb(question, disturb);
+                    
                     break;
             case 0:
                     question.Clear();
@@ -166,7 +181,16 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
+    public void playLevel4Invoke()
+    {
+        Serious.Play();
+        Invoke("playLevel4", 2f);
+    }
 
+    public void playLevel4()
+    {
+        AudioManager.Instance.RandomSoundEffect_Disturb(question, disturb);
+    }
     public void CreateRandomQuestion(int num)
     {
         for(int i = 0; i < num; i++)
